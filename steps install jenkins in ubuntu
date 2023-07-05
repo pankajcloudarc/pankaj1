@@ -1,0 +1,45 @@
+   curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+  
+  
+Then add a Jenkins apt repository entry:
+     echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+  
+Update your local package index, then finally install Jenkins:
+
+  sudo apt-get update
+  sudo apt-get install fontconfig openjdk-11-jre
+  sudo apt-get install jenkins
+sudo service Jenkins status
+sudo more /var/lib/jenkins/secrets/initialAdminPassword
+
+Remove OpenJDK,
+execute the following command on terminal:
+$ sudo apt-get remove openjdk*
+
+
+NOW INSTALL PLUGIN
+Manage Jenkins >>manage plugins >>  ssh agent
+
+
+
+Install through docker 
+sudo docker run -itd -p 8080:8080 --name my-jenkins jenkins/jenkins
+   20  docker ps -a
+   22  curl ifconfig.me
+   23  ip address
+   24  docker ps -a
+   25  netstat –tunlp    (open ports show)
+   26  sudo docker exec -it my-jenkins /bin/bash
+
+
+
+
+Shortcut to come out from Vi editor
+
+I : insert
+Shift+ZZ – exit
+vi
