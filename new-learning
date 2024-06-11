@@ -1,1 +1,41 @@
 hi i am new-learner
+
+git push --set-upstream origin my-learning
+  165  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  166  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+  167  sudo apt-get update
+  168  sudo apt-get install jenkins
+  169  sudo apt update
+  170  sudo apt install fontconfig openjdk-17-jre
+  171  java -version
+  172  openjdk version "17.0.8" 2023-07-18
+  173  snap install openjdk
+  174  java --version
+  175  sudo systemctl enable jenkins
+  176  sudo systemctl status jenkins
+  177  sudo systemctl enable jenkins
+  178  sudo systemctl start jenkins
+  179  sudo systemctl status jenkins
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
