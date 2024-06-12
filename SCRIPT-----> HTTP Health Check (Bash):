@@ -1,0 +1,16 @@
+HTTP Health Check (Bash):
+
+#!/bin/bash
+
+INSTANCE_URL="http://example.com"
+
+response=$(curl -s -o /dev/null -w "%{http_code}" $INSTANCE_URL)
+
+if [ $response -eq 200 ]; then
+    echo "Instance is healthy"
+    exit 0
+else
+    echo "Instance is unhealthy (HTTP status code: $response)"
+    exit 1
+fi
+
