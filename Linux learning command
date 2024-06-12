@@ -1,0 +1,22 @@
+To display only the total memory on a Unix-like system, you can use the grep command to filter the output of the free command. Here's how you can do it:
+
+Input: free -h | grep "Mem:" | awk '{print $2}'
+output: 7.7G
+
+1) Ram (memory)----->    free -h
+
+To display only the total CPU on a Unix-like system, you can use the grep command to filter the output of the free command. Here's how you can do it:
+
+2) CPU()------------>    top
+   grep -c "^processor" /proc/cpuinfo ------------->         show the cpu core number 
+   lscpu | grep "^CPU(s):" | awk '{print $2}' ----->         show the cpu core number
+   ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 10--> show the top 10 process connsuming cpu
+
+3)To display the total disk size on a Unix-like system
+  Disk(storage)----> df
+
+input:  df -h --total | grep "total" | awk '{print $2}'
+output: 100G
+
+
+   
