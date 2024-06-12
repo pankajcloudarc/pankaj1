@@ -7,3 +7,6 @@ else
     echo "Service is not running"
     exit 1
 fi
+
+chmod +x health_check_script.sh  # Replace with your script filename
+./health_check_script.sh  # Replace with your script filename
