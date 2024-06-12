@@ -1,0 +1,21 @@
+In the context of AWS (Amazon Web Services), "ELK" typically refers to a combination of three open-source projects: Elasticsearch, Logstash, and Kibana. 
+This combination is often used for log and data analysis, monitoring, and visualization. Here's a brief overview of each component:
+
+Elasticsearch: Elasticsearch is a distributed search and analytics engine designed for horizontal scalability, reliability, and real-time search capabilities. 
+It's commonly used for indexing and searching large volumes of data quickly and efficiently.
+
+Logstash: Logstash is a server-side data processing pipeline that ingests data from multiple sources, processes it, and sends it to a "stash" (such as Elasticsearch). 
+It's often used for log and event data collection, parsing, enrichment, and transformation.
+
+Kibana: Kibana is a data visualization and exploration tool that provides an interface for querying, analyzing, and visualizing data stored in Elasticsearch. 
+It allows users to create various types of charts, graphs, dashboards, and maps to gain insights from their data.
+
+Together, Elasticsearch, Logstash, and Kibana form the ELK Stack (sometimes referred to as the Elastic Stack), which is widely used for centralized logging, 
+monitoring, and analysis in cloud environments, including AWS.
+
+
+
+
+
+In summary, ELK and Prometheus serve different monitoring and observability needs, with ELK focusing on log management and analysis, while Prometheus specializes in 
+time-series metrics monitoring and alerting.
