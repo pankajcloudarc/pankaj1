@@ -1,0 +1,11 @@
+Service Health Check (Bash):
+
+#!/bin/bash
+
+if systemctl is-active --quiet service-name; then
+    echo "Service is running"
+    exit 0
+else
+    echo "Service is not running"
+    exit 1
+fi
