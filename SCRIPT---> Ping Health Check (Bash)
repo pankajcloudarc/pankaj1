@@ -1,0 +1,14 @@
+Ping Health Check (Bash)
+
+#!/bin/bash
+
+INSTANCE_IP="192.168.1.100"
+
+if ping -c 1 $INSTANCE_IP &> /dev/null; then
+    echo "Instance is reachable"
+    exit 0
+else
+    echo "Instance is unreachable"
+    exit 1
+fi
+
