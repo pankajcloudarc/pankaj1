@@ -1,0 +1,26 @@
+# Add Elasticsearch GPG key
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+# Add Elasticsearch repository to sources list
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+# Update package index
+sudo apt update
+
+# Install Elasticsearch
+sudo apt install elasticsearch
+
+# Edit Elasticsearch configuration
+sudo vim /etc/elasticsearch/elasticsearch.yml
+
+# Start Elasticsearch service
+sudo systemctl start elasticsearch
+
+# Enable Elasticsearch service to start on boot
+sudo systemctl enable elasticsearch
+
+# Check Elasticsearch service status
+sudo systemctl status elasticsearch
+
+# Verify Elasticsearch installation
+curl localhost:9200
