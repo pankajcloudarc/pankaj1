@@ -167,11 +167,13 @@ $ sudo nano /etc/elasticsearch/elasticsearch.yml
    path.logs: /var/log/elasticsearch
    path.data: /var/lib/elasticsearch
   
-   network.host: localhost
+   network.host: 0.0.0.0
    http.port: 9200
-
+   discovery.seed_hosts: ["0.0.0.0"]
 ----------------------------------------------------------------------------------------------------------------------------------------------------
+curl localhost:9200
 
+$ sudo systemctl restart elasticsearch (if any system occurs)
 $ sudo systemctl start elasticsearch
 $ sudo systemctl enable elasticsearch
 
