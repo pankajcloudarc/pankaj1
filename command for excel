@@ -1,0 +1,5 @@
+command for excel
+
+
+aws ec2 describe-instances --region ap-south-1 --query "Reservations[*].Instances[*].[InstanceId, InstanceType, PrivateIpAddress, Tags[?Key=='Name'].Value | [0]]" --output text
+
