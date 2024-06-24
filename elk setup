@@ -1,107 +1,14 @@
 
-ELK ---> Elastic, Logstack, Kinaba, filebeat
-
-1. Install Filebeat on frontend.
-https://logit.io/sources/configure/ubuntu -----> link for filebeat installtion
-
- -  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-oss-7.15.1-amd64.deb
- - sudo dpkg -i filebeat-oss-7.15.1-amd64.deb
-
-2. to remove Filebeat
- - sudo dpkg --purge filebeat
 
 
-
-installation links for ELK stack
-
-1. https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04
-2. https://asibin99.medium.com/install-elk-stack-on-ubuntu-20-04-18f6d748bbe0
-
-*Note ---> your filebeat and elasticsearch, logstash and kibana must have same version.
-
-$ cd /etc/filebeat/modules.d
-
-In module enble nginx using follwing coomand
-
-$ filebeat modules enable nginx
-
-after enable some change with nginx.yml uncomment following give path of access log
-
-
-----------------------------------------------------------------------------------------------------------------------------------------------------
-- module: nginx
-   access:
-    enabled: true
-    var.paths: ["/path/to/log/nginx/access.log*"]
-   error:
-    enabled: true
-    var.paths: ["/path/to/log/nginx/error.log*"]
-   ingress_controller:
-    enabled: false
-
--------------------------------------------------------------------------------------------------------------------------------------------
-
-
-after that change configuration of filebeat.yml as per below
-
-$ sudo nano /etc/filebeat/filebeat.yml
-
--------------------------------------------------------------------------------------------------------------------------------------------------
-
-filebeat.inputs:
-- type: log
-  paths:
-    - /var/log/nginx/access.log.1
-
-filebeat.config.modules:
-  
-  path: ${path.config}/modules.d/*.yml
-   
-  reload.enabled: true
- 
-  reload.period: 10s
-
-setup.template.settings:
-  index.number_of_shards: 1
-
-output.logstash:
-
-  hosts: ["ELK server private IP:5044"]
-
-processors:
-  - add_host_metadata:
-      when.not.contains.tags: forwarded
-  - add_cloud_metadata: ~
-  - add_docker_metadata: ~
-  - add_kubernetes_metadata: ~
-
------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Restart your filebeat now and this will end with frontend configration
-
-$ sudo systemctl restart filebeat
-$ sudo systemctl enable filebeat
-
-
-check error log file of filebeat and also sending log data logstash
-
-$ journalctl -u filebeat.service
-
-some other command in filebeat
-
-$ sudo filebeat setup -e ----> not use just for reference
-
-
+https://www.youtube.com/watch?v=roJQ-7F_Vgg -- link to download elk video 
 
 ************************************************End with frontend Now go to ELK server********************************************************************
 
   Launch new instance,  Install ELK stack on that server which should be t2.medium/t2.large.
    ELK server ---> security group -----> routed All traffic
 
-*Note ---> your filebeat and elasticsearch, logstash and kibana must have same version.
-
-**must --> Before Installing ELK we have install JDK-8 and nginx on ELK server
+ELK server
 
 $ sudo apt update
 $ sudo apt install openjdk-8-jdk
@@ -167,9 +74,9 @@ $ sudo nano /etc/elasticsearch/elasticsearch.yml
    path.logs: /var/log/elasticsearch
    path.data: /var/lib/elasticsearch
   
-   network.host: 0.0.0.0
+   network.host: 0.0.0.0  --- fot this ip a and paste the second line ip
    http.port: 9200
-   discovery.seed_hosts: ["0.0.0.0"]
+  
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 curl localhost:9200
 
