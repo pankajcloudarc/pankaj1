@@ -1,0 +1,9 @@
+Describe Instances Command 1
+
+Command: aws ec2 describe-instances --region ap-south-1 --query "Reservations[].Instances[].[InstanceId, InstanceType, PrivateIpAddress, Tags[?Key=='Name'].Value | [0]]" --output text
+
+Describe Instances Command 2
+
+Command: aws ec2 describe-instances --region ap-south-1 --query "Reservations[].Instances[].[InstanceId, InstanceType, Tags[?Key=='Name'].Value | [0]]" --output text > pankaj-lala-instance-info.txt
+
+
