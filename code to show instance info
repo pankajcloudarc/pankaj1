@@ -21,3 +21,20 @@ aws elbv2 describe-load-balancers --query 'LoadBalancers[?Type==`application`].L
 aws rds describe-db-instances --region ap-south-1 --query 'DBInstances[*].{DBInstanceIdentifier:DBInstanceIdentifier,AllocatedStorage:AllocatedStorage,MaxAllocatedStorage:MaxAllocatedStorage,StorageAutoscaling:(MaxAllocatedStorage != `null`)}'
 
 
+To remove the borders (---) from the output of the aws elbv2 describe-load-balancers
+
+==================================================================================================================================================================================================
+
+* aws elbv2 describe-load-balancers --query 'LoadBalancers[*].LoadBalancerArn' --output table | sed 's/[-]*//g'
+
+
+
+==================================================================================================================================================================================================
+
+If you want to use awk to display only the second column (the name of each load balancer) after retrieving the data using aws elbv2 describe-load-balancers, you can do so by chaining the AWS CLI command with awk.
+
+aws elbv2 describe-load-balancers --query 'LoadBalancers[*].LoadBalancerName' --output text | awk '{print $1}'
+
+==================================================================================================================================================================================================
+| awk '{print $1}'  -------- add if you want to see first coulumn
+
