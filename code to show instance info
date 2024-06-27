@@ -6,4 +6,18 @@ Describe Instances Command 2
 
 Command: aws ec2 describe-instances --region ap-south-1 --query "Reservations[].Instances[].[InstanceId, InstanceType, Tags[?Key=='Name'].Value | [0]]" --output text > pankaj-lala-instance-info.txt
 
+command for excel
+
+
+aws ec2 describe-instances --region ap-south-1 --query "Reservations[*].Instances[*].[InstanceId, InstanceType, PrivateIpAddress, Tags[?Key=='Name'].Value | [0]]" --output text
+
+
+--------------------------------------Load balancer information codes----------------------------------------------------
+
+aws elbv2 describe-load-balancers --query 'LoadBalancers[?Type==`application`].LoadBalancerName'
+
+---------------------------------------Db information codes-------------------------------------------------------------
+
+aws rds describe-db-instances --region ap-south-1 --query 'DBInstances[*].{DBInstanceIdentifier:DBInstanceIdentifier,AllocatedStorage:AllocatedStorage,MaxAllocatedStorage:MaxAllocatedStorage,StorageAutoscaling:(MaxAllocatedStorage != `null`)}'
+
 
