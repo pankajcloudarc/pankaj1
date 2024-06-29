@@ -38,3 +38,16 @@ aws elbv2 describe-load-balancers --query 'LoadBalancers[*].LoadBalancerName' --
 ==================================================================================================================================================================================================
 | awk '{print $1}'  -------- add if you want to see first coulumn
 
+==================================================================================================================================================================================================
+
+To see the object names within a folder in an S3 bucket using the AWS CLI, you can use the aws s3 ls command. This command will list the objects and display their names along with other details. Here's how you can do it:
+
+
+aws s3 ls s3://my-bucket/my-folder/
+
+
+
+
+
+
+
